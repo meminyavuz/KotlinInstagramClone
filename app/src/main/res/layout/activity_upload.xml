@@ -6,15 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".UploadActivity">
 
+    <Button
+        android:id="@+id/addPostButton"
+        android:layout_width="137dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="addPostClicked"
+        android:text="Add Post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/logoutButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="137dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="logoutClicked"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addPostButton"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
