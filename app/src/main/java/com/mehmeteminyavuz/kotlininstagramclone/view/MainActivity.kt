@@ -1,14 +1,11 @@
-package com.mehmeteminyavuz.kotlininstagramclone
+package com.mehmeteminyavuz.kotlininstagramclone.view
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mehmeteminyavuz.kotlininstagramclone.databinding.ActivityMainBinding
@@ -30,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if(currentUser != null){
-            val intent = Intent(this,UploadActivity::class.java)
+            val intent = Intent(this, UploadActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -49,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {task ->
-                val intent = Intent(this@MainActivity,UploadActivity::class.java)
+                val intent = Intent(this@MainActivity, UploadActivity::class.java)
                 Toast.makeText(this,"Authentication completed successfully!",Toast.LENGTH_LONG).show()
                 binding.editTextEmailAddress.text.clear()
                 binding.editTextPassword.text.clear()
@@ -73,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             auth.signInWithEmailAndPassword(email,password).addOnSuccessListener {
-                val intent = Intent(this@MainActivity,UploadActivity::class.java)
+                val intent = Intent(this@MainActivity, UploadActivity::class.java)
                 startActivity(intent)
                 Toast.makeText(this,"Login with ${email} email!",Toast.LENGTH_LONG).show()
                 finish()
