@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mehmeteminyavuz.kotlininstagramclone.adapter.RecyclerAdapter
@@ -42,7 +43,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     private fun getData(){
-        db.collection("postDetails").addSnapshotListener { value, error ->
+        db.collection("postDetails").orderBy("date",Query.Direction.DESCENDING).addSnapshotListener { value, error ->
 
 
             if (error != null){
@@ -51,6 +52,9 @@ class UploadActivity : AppCompatActivity() {
                 if (value != null){
                     if(!value.isEmpty){
                         val docs = value.documents
+
+                        postArrayList.clear()
+
                         for (document in docs){
                             val comment = document.get("comment") as String
                             val userEmail = document.get("userEmail") as String
@@ -68,6 +72,12 @@ class UploadActivity : AppCompatActivity() {
     fun addPostClicked(view: View){
         val intent = Intent(this, FeedActivity::class.java)
         startActivity(intent)
+    }
+
+    fun profileClicked(view: View){
+        val intent = Intent(this,ProfileActivity::class.java)
+        startActivity(intent)
+
     }
     fun logoutClicked(view: View){
         auth.signOut()

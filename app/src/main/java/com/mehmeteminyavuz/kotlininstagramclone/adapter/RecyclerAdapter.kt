@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mehmeteminyavuz.kotlininstagramclone.databinding.ActivityUploadBinding
 import com.mehmeteminyavuz.kotlininstagramclone.databinding.RecyclerRowBinding
 import com.mehmeteminyavuz.kotlininstagramclone.model.Post
+import com.squareup.picasso.Picasso
 
 class RecyclerAdapter(private val postList: ArrayList<Post>) : RecyclerView.Adapter<RecyclerAdapter.PostHolder>() {
     class PostHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,6 +26,7 @@ class RecyclerAdapter(private val postList: ArrayList<Post>) : RecyclerView.Adap
         holder.binding.recyclerEmailText.text = postList.get(position).email
         holder.binding.recyclerCommentText.text = postList.get(position).comment
 
+        Picasso.get().load(postList.get(position).downloadUrl).into(holder.binding.recyclerImageView)
 
     }
 }
